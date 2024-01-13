@@ -38,6 +38,7 @@ class Recommender:
         )
 
     def respond(self, message, chat_history):
+        # Continue with the usual conversation handling
         chat_llm_chain = self.create_llm_chain()
         response = chat_llm_chain.predict(human_input=message)
         chat_history.append((message, response))
