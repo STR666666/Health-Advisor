@@ -11,8 +11,6 @@ from langchain import OpenAI, LLMChain
 from langchain.tools import DuckDuckGoSearchRun
 from langchain.schema import AgentAction, AgentFinish
 from langchain.chat_models import ChatOpenAI
-from prompts.system_template import REACT_TEMPLATE
-from utils.tools import duckwrapper
 
 # Custom prompt template class
 class CustomPromptTemplate(StringPromptTemplate):
@@ -30,13 +28,6 @@ class CustomPromptTemplate(StringPromptTemplate):
         kwargs["tool_names"] = ", ".join([tool.name for tool in self.tools])
         return self.template.format(**kwargs)
 
-    def prompt_template(self, tools):
-        # Initialize the custom prompt
-        prompt = CustomPromptTemplate(
-            template=REACT_TEMPLATE,
-            tools=tools,
-            input_variables=["input", "intermediate_steps"]
-        )
 
 # Custom output parser class
 class CustomOutputParser(AgentOutputParser):
@@ -53,9 +44,3 @@ class CustomOutputParser(AgentOutputParser):
         action = match.group(1).strip()
         action_input = match.group(2).strip(" ").strip('"')
         return AgentAction(tool=action, tool_input=action_input, log=llm_output)
-
-# Setup for the agent and its execution
-output_parser = CustomOutputParser()
-llm = ChatOpenAI(model="gpt-4", temperature=0, openai_api_key=os.environ["OPENAI_API_KEY"])
-llm_chain = LLMChain(llm=llm, prompt=prompt)
-tool_names = [tool.name for tool in tools]
