@@ -9,6 +9,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, MessagesPlaceholder
 from langchain.schema import SystemMessage
 from langchain.chat_models import ChatOpenAI
+from langchain.agents import Tool, AgentExecutor
 from prompts.system_template import PERSONA_TEMPLATE
 
 class Recommender:
@@ -18,6 +19,7 @@ class Recommender:
         self.llm_feedback = None
         self.prompt = self.create_prompt_template()
         self.memory = self.initialize_memory()
+        self.agent_executor = None
 
     def create_prompt_template(self):
         return ChatPromptTemplate.from_messages([
@@ -36,10 +38,16 @@ class Recommender:
             verbose=True,
             memory=self.memory,
         )
+    
+    def agent_exec(self, agent_executor):
+        self.agent_executor = agent_executor
 
-    def respond(self, message, chat_history):
-        # Continue with the usual conversation handling
-        chat_llm_chain = self.create_llm_chain()
-        response = chat_llm_chain.predict(human_input=message)
-        chat_history.append((message, response))
+    def respond_to_input(self, user_input):
+        # Process the user input
+        response = self.agent_executor.run(user_input)
+
+        # Format the response as a list of tuples [(user_input, response)]
+        chat_history = [(user_input, response)]
+
+        # Return an empty string for the msg textbox to clear it and the updated chat history for the chatbot
         return "", chat_history
