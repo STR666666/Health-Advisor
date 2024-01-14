@@ -14,10 +14,7 @@ const ChatbotComponent = () => {
     initialMessages: [], // Add an empty array for initialMessages
   };
 
-  const actionProvider =  new ChatbotActionProvider(
-    addMessage, // Pass the addMessage function to ChatbotActionProvider
-    (state) => setState(state) // Assuming you have a setState function
-  );
+  const actionProvider = {};
   const messageParser = {};
 
   return (

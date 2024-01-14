@@ -5,12 +5,158 @@ const BodyMap = () => {
   const [checkedSymptoms, setUserSymptoms] = useState([]);
   const [hoveredArea, setHoveredArea] = useState(null);
   const [showSymptomModal, setShowSymptomModal] = useState(false);
+  const head_symptom = [
+    'headache',
+    'anxiety',
+    'fever',
+    'cough',
+    'breathlessness',
+    'phlegm',
+    'shortness_of_breath',
+    'altered_sensorium',
+    'blurred_and_distorted_vision',
+    'dizziness',
+    'high_fever',
+    'irritability',
+    'lack_of_concentration',
+    'lethargy',
+    'loss_of_balance',
+    'loss_of_smell',
+    'loss_of_taste',
+    'mood_swings',
+    'nausea',
+    'slurred_speech',
+    'spinning_movements',
+    'unsteadiness',
+    'visual_disturbances',
+    'vomiting',
+    'watering_from_eyes',
+    'weakness_in_limbs',
+    'weakness_of_one_body_side',
+    'congestion',
+    'runny_nose',
+    'sinus_pressure',
+    'mild_fever',
+    'shivering',
+    'yellow_crust_ooze',
+    'yellow_urine',
+    'yellowing_of_eyes',
+    'yellowish_skin',
+    'blackheads',
+    'blister',
+    'bruising',
+    'drying_and_tingling_lips',
+    'itching',
+    'mucoid_sputum',
+    'red_sore_around_nose',
+    'redness_of_eyes',
+    'sunken_eyes',
+  ];
+  const pelvis_symptom = [
+    'pain_during_bowel_movements',
+    'pain_in_anal_region',
+    'continuous_feel_of_urine',
+    'urinary_problems',
+    'bladder_discomfort',
+    'polyuria',
+    'blood_in_sputum',
+    'bloody_stool',
+    'blister',
+    'bruising',
+    'burning_micturition',
+    'foul_smell_of_urine',
+    'itching',
+  ];
+  const chest_symptom = [
+    'chest_pain',
+    'skin_rash',
+    'fluid_overload',
+    'fluid_overload',
+    'blister',
+    'bruising',
+    'cramps',
+    'fast_heart_rate',
+    'itching',
+    'palpitations',
+  ];
+
+  const neck_symptom =  [
+    'neck_pain',
+    'stiff_neck',
+    'skin_rash',
+    'swollen_lymph_nodes',
+    'throat_irritation',
+    'blister',
+    'bruising',
+    'enlarged_thyroid',
+    'itching',
+    'patches_in_throat',
+    'rusty_sputum',
+  ];
+  const abdomen_symptom = [
+    'abdominal_pain',
+    'distention_of_abdomen',
+    'stomach_pain',
+    'belly_pain',
+    'skin_rash',
+    'acidity',
+    'constipation',
+    'diarrhoea',
+    'indigestion',
+    'obesity',
+    'stomach_bleeding',
+    'nausea',
+    'vomiting',
+    'diarrhea',
+    'constipation',
+    'indigestion',
+    'abnormal_menstruation',
+    'acute_liver_failure',
+    'dark_urine',
+    'spotting_urination',
+    'swelling_of_stomach',
+    'swollen_blood_vessels',
+    'pain_behind_the_eyes',
+    'blister',
+    'bruising',
+    'cramps',
+    'itching',
+    'passage_of_gases',
+  ];
+  
+  const buttocks_symptom = ['skin_rash', 'irritation_in_anus', 'muscle_pain', 'blister', 'bruising', 'cramps', 'itching'];
+
+const back_symptom = ['back_pain', 'skin_rash', 'muscle_pain', 'blister', 'bruising', 'cramps', 'itching'];
+
+const shoulder_symptom = ['skin_rash', 'joint_pain', 'blister', 'bruising', 'cramps', 'itching'];
+
+const upperarm_symptom = ['skin_rash', 'joint_pain', 'blister', 'bruising', 'cramps', 'itching'];
+
+const forearm_symptom = ['skin_rash', 'joint_pain', 'blister', 'bruising', 'cramps', 'itching'];
+
+const wrist_symptom = ['skin_rash', 'joint_pain', 'blister', 'bruising', 'itching', 'swelling_joints'];
+
+const hand_symptom = ['skin_rash', 'joint_pain', 'cold_hands_and_feet', 'puffy_face_and_eyes', 'blister', 'brittle_nails', 'bruising', 'cramps', 'inflammatory_nails', 'itching', 'small_dents_in_nails'];
+
+const thigh = ['skin_rash', 'muscle_pain', 'muscle_wasting', 'muscle_weakness', 'blister', 'bruising', 'cramps', 'itching'];
+
+const knee = ['knee_pain', 'skin_rash', 'joint_pain', 'swelling_joints'];
+
+const leg = ['swollen_legs', 'skin_rash', 'muscle_pain', 'prominent_veins_on_calf', 'swollen_extremities', 'blister', 'bruising', 'cramps', 'itching'];
+
+const ankle = ['skin_rash', 'joint_pain', 'swelling_joints'];
+
+const foot = ['painful_walking', 'skin_rash', 'joint_pain', 'blister', 'bruising', 'itching'];
+
+const hip = ['hip_joint_pain', 'skin_rash', 'muscle_pain', 'blister', 'bruising', 'cramps', 'itching'];
+
+const Psychological = ['anxiety', 'depression', 'irritability', 'mood_swings', 'restlessness', 'extra_marital_contacts'];
+
+const General = ['fatigue', 'fever', 'malaise', 'weakness', 'weight_loss', 'weight_gain', 'chills', 'dehydration', 'sweating', 'tiredness', 'excessive_hunger', 'increased_appetite', 'irregular_sugar_level', 'loss_of_appetite', 'toxic_look_(typhus)', 'ulcers_on_tongue', 'family_history', 'history_of_alcohol_consumption', 'internal_itching', 'movement_stiffness', 'nodal_skin_eruptions', 'pus_filled_pimples', 'receiving_blood_transfusion', 'receiving_unsterile_injections', 'scurrying', 'red_spots_over_body', 'silver_like_dusting', 'skin_peeling'];
 
   const handleMouseOver = (target) => {
     // want to display window with list of symptoms
-    if (target === "P") {
-      const pelvis_symptom = [];
-
+    if (target === "Pelvis") {
       pelvis_symptom.forEach((symptom) => {
         const isChecked = window.confirm(`Do you have ${symptom}?`);
         if (isChecked) {
@@ -21,52 +167,8 @@ const BodyMap = () => {
           setUserSymptoms((prevSymptoms) => prevSymptoms.filter((s) => s !== symptom));
         }
       });
-    };
-    if (target === "N") {
-      const neck_symptom = [];
-
-      neck_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          checkedSymptoms.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((s) => s !== symptom));
-        }
-      });
     }
-    if (target === "C") {
-      const chest_symptom = [];
-
-      chest_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          checkedSymptoms.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((s) => s !== symptom));
-        }
-      });
-    }
-    if (target === "A") {
-      const abdomen_symptom = [];
-
-      abdomen_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          checkedSymptoms.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((s) => s !== symptom));
-        }
-      });
-    }
-    if (target === "H") {
-      const head_symptom = [];
-
+    if (target === "Head") {
       head_symptom.forEach((symptom) => {
         const isChecked = window.confirm(`Do you have ${symptom}?`);
         if (isChecked) {
@@ -78,214 +180,7 @@ const BodyMap = () => {
         }
       });
     }
-    if (target === "Sh_R" || target === "Sh_L") {
-      const shoulder_symptom = [];
-      shoulder_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          checkedSymptoms.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((s) => s !== symptom));
-        }
-      });
-    }
-    if (target === "Bi_R" || target === "Bi_L") {
-      const bicep_symptom = [];
-      bicep_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          checkedSymptoms.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((s) => s !== symptom));
-        }
-      });
-    }
-    if (target === "Frm_R" || target === "Frm_L") {
-      const forearm_symptom = [];
-      forearm_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          forearm_symptom.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((s) => s !== forearm_symptom));
-        }
-      });
-    }
-    if (target === "Hnd_L" || target === "Hnd_R") {
-      const hand_symptom = [];
-      hand_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          hand_symptom.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((hand_symptom) => hand_symptom !== symptom));
-        }
-      });
-    }
-    if (target === "Th_R" || target === "Th_L") {
-      const thigh_symptom = [];
-      thigh_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          thigh_symptom.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((thigh_symptom) => thigh_symptom !== symptom));
-        }
-      });
-    }
-    if (target === "K_R" || target === "K_L") {
-      const knee_symptom = [];
-      knee_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          knee_symptom.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((knee_symptom) => knee_symptom !== symptom));
-        }
-      });
-    }
-    if (target === "L_R" || target === "L_L") {
-      const leg_symptom = [];
-      leg_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          leg_symptom.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((leg_symptom) => leg_symptom !== symptom));
-        }
-      });
-    }
-    if (target === "Ft_R" || target === "Ft_L") {
-      const foot_symptom = [];
-      foot_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          foot_symptom.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((foot_symptom) => foot_symptom !== symptom));
-        }
-      });
-    }
-    if (target === "H_B") {
-      const head_back_symptom = [];
-      head_back_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          head-back_symptom.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((head_back_symptom) => head_back_symptom !== symptom));
-        }
-      });
-    }
-    if (target === "Bck") {
-      const back_symptom = [];
-      back_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          back_symptom.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((back_symptom) => back_symptom !== symptom));
-        }
-      });
-    }
-    if (target === "Tri_R" || target === "Tri_L") {
-      const tricep_symptom = [];
-      tricep_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          tricep_symptom.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((tricep_symptom) => tricep_symptom !== symptom));
-        }
-      });
-    }
-    if (target === "W_R" || target === "W_L") {
-      const wrist_symptom = [];
-      wrist_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          wrist_symptom.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((wrist_symptom) => wrist_symptom !== symptom));
-        }
-      });
-    }
-    if (target === "B") {
-      const buttocks_symptom = [];
-      buttocks_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          buttocks_symptom.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((buttocks_symptom) => buttocks_symptom !== symptom));
-        }
-      });
-    }
-    if (target === "Ham_R" || target === "Ham_L") {
-      const hamstring_symptom = [];
-      hamstring_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          hamstring_symptom.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((hamstring_symptom) => hamstring_symptom !== symptom));
-        }
-      });
-    }
-    if (target === "A_R" || target === "A_L") {
-      const ankle_symptom = [];
-      ankle_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          ankle_symptom.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((ankle_symptom) => ankle_symptom !== symptom));
-        }
-      });
-    }
-    if (target === "Hp") {
-      const hip_symptom = [];
-      hip_symptom.forEach((symptom) => {
-        const isChecked = window.confirm(`Do you have ${symptom}?`);
-        if (isChecked) {
-          hip_symptom.push(symptom);
-        }
-        else {
-          // If user unchecks, remove the symptom from the array
-          setUserSymptoms((prevSymptoms) => prevSymptoms.filter((hip_symptom) => hip_symptom !== symptom));
-        }
-      });
-    }
+   
   };
 
   const handleMouseOut = () => {
@@ -324,7 +219,7 @@ const BodyMap = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ symptoms: userSymptoms }),
+      body: JSON.stringify({ symptoms: checkedSymptoms }),
     })
     .then(response => response.json())
     .then(data => {
@@ -335,20 +230,47 @@ const BodyMap = () => {
       console.error('Error sending data to backend:', error);
     });
   };
+  console.log(hoveredArea)
 
+  const renderSymptomSelection = () => {
+    return (
+      <div className="symptom-modal">
+        <h2>Select Symptoms for {hoveredArea}</h2>
+        <form>
+          {/* Render checkboxes for symptoms */}
+          {symptomsByArea[hoveredArea].map((symptom) => (
+            <div key={symptom}>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={checkedSymptoms.includes(symptom)}
+                  onChange={() => handleCheckboxChange(symptom)}
+                />
+                {symptom}
+              </label>
+            </div>
+          ))}
+        </form>
+      </div>
+    );
+  };
   return ( 
     <>
-      <img src={'/bodymap.jpg'} alt="Body Map" useMap="#image-map" onMouseOut={handleMouseOut} 
-        onMouseOver={(e) => {
-          const areaTarget = e.target.getAttribute('target');
-          if (areaTarget) {
-            setHoveredArea(areaTarget);
-            handleMouseOver(areaTarget);
-          }
-        }}/>
-      <map name="image-map">
+      <img src={'/bodymap.jpg'} alt="Body Map" useMap="#image-map" onMouseOut={handleMouseOut} onClick={() => handleMouseOver(null)} />
 
-      <area target="P" alt="Pelvis" title="Pelvis" href="" coords="130,194,162,190,162,157,156,147,139,169,120,167,111,155,105,146,100,154,98,190" shape="poly" hoveredArea={handleMouseOver}/>
+      <map name="image-map" onMouseOver={(e) => {
+         const areaTarget = e.target.getAttribute('title');
+         if (areaTarget) {
+           setHoveredArea(areaTarget);
+           handleMouseOver(areaTarget);
+         }
+       }}
+       onClick={(e) => {
+        // Prevent the click event from reaching the body map image
+        e.stopPropagation();
+      }}>
+
+      <area target="P" alt="Pelvis" title="Pelvis" href="" coords="130,194,162,190,162,157,156,147,139,169,120,167,111,155,105,146,100,154,98,190" shape="poly" />
 
       <area target="N" alt="Neck" title="Neck" href="" coords="119,57,119,49,127,55,134,55,142,48,142,57,152,62,161,67,97,68" shape="poly" />
 
@@ -396,9 +318,9 @@ const BodyMap = () => {
 
       <area target="Bck" alt="Back" title="Back" href="" coords="306,57,289,66,289,86,293,97,295,110,300,120,299,130,352,130,351,119,354,110,358,102,361,87,363,67,353,60,345,57" shape="poly"/>
 
-      <area target="Tri_R" alt="Tricep (R)" title="Tricep (R)" href="" coords="278,114,280,124,287,128,293,129,296,121,296,112,292,102,291,91,289,88,280,90,278,102" shape="poly"/>
+      <area target="Tri_L" alt="Tricep (L)" title="Tricep (L)" href="" coords="278,114,280,124,287,128,293,129,296,121,296,112,292,102,291,91,289,88,280,90,278,102" shape="poly"/>
 
-      <area target="Tri_L" alt="Tricep (L)" title="Tricep (L)" href="" coords="361,91,371,92,372,102,374,120,366,128,357,127,353,113" shape="poly"/>
+      <area target="Tri_R" alt="Tricep (R)" title="Tricep (R)" href="" coords="361,91,371,92,372,102,374,120,366,128,357,127,353,113" shape="poly"/>
 
       <area target="W_R" alt="Wrist (R)" title="Wrist (R)" href="" coords="72,169,85,174,87,167,74,165" shape="poly"/>
 
@@ -406,9 +328,9 @@ const BodyMap = () => {
 
       <area target="B" alt="Buttocks" title="Buttocks" href="" coords="301,136,311,135,316,138,321,148,330,148,335,139,340,135,346,136,351,139,355,143,354,155,357,172,356,175,347,178,338,182,330,180,325,178,319,182,312,181,307,180,300,176,294,172,294,161,297,152,296,145" shape="poly"/>
 
-      <area target="Ham_R" alt="Hamstring (R)" title="Hamstring (R)" href="" coords="294,173,295,195,302,222,303,232,311,231,317,235,323,235,325,177,319,183,305,181" shape="poly"/>
+      <area target="Ham_L" alt="Hamstring (L)" title="Hamstring (L)" href="" coords="294,173,295,195,302,222,303,232,311,231,317,235,323,235,325,177,319,183,305,181" shape="poly"/>
 
-      <area target="Ham_L" alt="Hamstring (L)" title="Hamstring (L)" href="" coords="326,179,328,216,327,228,328,234,335,235,340,231,348,232,352,211,355,203,356,186,357,174,349,178,338,183,333,181" shape="poly"/>
+      <area target="Ham_R" alt="Hamstring (R)" title="Hamstring (R)" href="" coords="326,179,328,216,327,228,328,234,335,235,340,231,348,232,352,211,355,203,356,186,357,174,349,178,338,183,333,181" shape="poly"/>
 
       <area target="A_R" alt="Ankle (R)" title="Ankle (R)" href="" coords="115,312,115,320,127,326,128,315" shape="poly"/>
 
@@ -418,7 +340,7 @@ const BodyMap = () => {
         {/* Add more area elements as needed */}
       </map>
 
-      {showSymptomModal && (
+      {/* {showSymptomModal && (
         <div>
           <h2>Select Symptoms for {hoveredArea}</h2>
           <form>
@@ -437,7 +359,8 @@ const BodyMap = () => {
           </form>
           <button onClick={() => setShowSymptomModal(false)}>Close</button>
         </div>
-      )}
+      )} */}
+      {hoveredArea && renderSymptomSelection()}
 
       {/* Button to trigger symptom selection */}
       {hoveredArea && (
