@@ -1,6 +1,6 @@
 import React from 'react';
 import { Chatbot } from 'react-chatbot-kit';
-import useChatMessages from './useChatMessages';
+import useChatMessages from './useChatMessagenps';
 import ChatbotActionProvider from './ChatbotActionProvider';
 
 const ChatbotComponent = () => {
