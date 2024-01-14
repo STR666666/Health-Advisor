@@ -338,7 +338,7 @@ const BodyMap = () => {
 
   return ( 
     <>
-      <img ref src={process.env.PUBLIC_URL + '/bodymap.jpg'} alt="Body Map" useMap="#image-map" onMouseOut={handleMouseOut} 
+      <img src={'/bodymap.jpg'} alt="Body Map" useMap="#image-map" onMouseOut={handleMouseOut} 
         onMouseOver={(e) => {
           const areaTarget = e.target.getAttribute('target');
           if (areaTarget) {
@@ -348,7 +348,7 @@ const BodyMap = () => {
         }}/>
       <map name="image-map">
 
-      <area target="P" alt="Pelvis" title="Pelvis" href="" coords="130,194,162,190,162,157,156,147,139,169,120,167,111,155,105,146,100,154,98,190" shape="poly" />
+      <area target="P" alt="Pelvis" title="Pelvis" href="" coords="130,194,162,190,162,157,156,147,139,169,120,167,111,155,105,146,100,154,98,190" shape="poly" hoveredArea={handleMouseOver}/>
 
       <area target="N" alt="Neck" title="Neck" href="" coords="119,57,119,49,127,55,134,55,142,48,142,57,152,62,161,67,97,68" shape="poly" />
 

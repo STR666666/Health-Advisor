@@ -7,7 +7,7 @@ function App() {
   return (
     <>
     
-    <BodyMap /> {/* Render your BodyMap */}
+    <BodyMap /> 
     </>
   );
 }
