@@ -12,6 +12,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.agents import Tool, AgentExecutor
 from prompts.system_template import PERSONA_TEMPLATE
 
+
 class Recommender:
     def __init__(self):
         self.openai_api_key = os.environ["OPENAI_API_KEY"]
