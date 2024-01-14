@@ -16,7 +16,6 @@ from utils.tools import duck
 from recommender.template import CustomPromptTemplate, CustomOutputParser
 from prompts.system_template import REACT_TEMPLATE
 from recommender.recommender_system import Recommender
-
 # Set up the tools available to the agent
 tools = [
     Tool(
