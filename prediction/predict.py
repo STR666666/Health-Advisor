@@ -1,11 +1,4 @@
 import pandas as pd
-import numpy as np
-import os
-for dirname, _, filenames in os.walk('/kaggle/input'):
-    for filename in filenames:
-        print(os.path.join(dirname, filename))
-
-import matplotlib.pyplot as plt
 from sklearn.neighbors import KNeighborsClassifier
 
 df = pd.read_csv('data/dataset.csv')
@@ -21,7 +14,6 @@ X_test = df5.drop("prognosis",axis=1)
 y_test = df5["prognosis"].copy()
 
 knn = KNeighborsClassifier(n_neighbors = 5).fit(X_train_data, y_train_data)
-print(X_test.head(1).shape)
 knn_predictions = knn.predict(X_test.head(1))
 
 print(knn_predictions)
